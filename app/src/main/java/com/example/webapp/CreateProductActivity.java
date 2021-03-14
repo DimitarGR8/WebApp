@@ -5,6 +5,8 @@ import android.view.View;
 import android.widget.Button;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.io.ByteArrayOutputStream;
+
 
 public class CreateProductActivity extends BaseActivity implements View.OnClickListener {
 
@@ -14,6 +16,7 @@ public class CreateProductActivity extends BaseActivity implements View.OnClickL
     TextInputEditText productLongDescription;
     TextInputEditText productCategory;
     TextInputEditText productPrice;
+    ByteArrayOutputStream productImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +54,7 @@ public class CreateProductActivity extends BaseActivity implements View.OnClickL
         productToBeCreated.set_dateAdded("15.15.15");
         productToBeCreated.set_category(String.valueOf(productCategory.getText()));
         productToBeCreated.set_productPrice(Double.parseDouble(String.valueOf(productPrice.getText())));
-        productToBeCreated.set_productPicture("");
+        productToBeCreated.set_productPicture(productImage);
 
         DatabaseOperations databaseOperations = new DatabaseOperations(this);
         return databaseOperations.createNewProduct(productToBeCreated);

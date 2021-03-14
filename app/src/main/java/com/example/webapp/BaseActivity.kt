@@ -6,6 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 
 open class BaseActivity: AppCompatActivity() {
 
+    companion object {
+        const val RC_CAPTURE_IMAGE = 100
+        const val RC_PERMISSION = 200
+    }
+
     protected var isThisAdmin: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {

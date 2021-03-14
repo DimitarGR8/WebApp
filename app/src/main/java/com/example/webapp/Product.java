@@ -1,5 +1,7 @@
 package com.example.webapp;
 
+import java.io.ByteArrayOutputStream;
+
 public class Product {
 
     int _productId;
@@ -9,7 +11,7 @@ public class Product {
     String _mainDescription;
     Double _productPrice;
     String _dateAdded;
-    String _productPicture;
+    ByteArrayOutputStream _productPicture;
 
     public Product(int productId,
                    String productName,
@@ -18,7 +20,7 @@ public class Product {
                    String mainDescription,
                    Double productPrice,
                    String dateAdded,
-                   String productPicture) {
+                   ByteArrayOutputStream productPicture) {
 
         this._productId = productId;
         this._productName = productName;
@@ -90,11 +92,11 @@ public class Product {
         this._dateAdded = _dateAdded;
     }
 
-    public String get_productPicture() {
+    public ByteArrayOutputStream get_productPicture() {
         return _productPicture;
     }
 
-    public void set_productPicture(String _productPicture) {
+    public void set_productPicture(ByteArrayOutputStream _productPicture) {
         this._productPicture = _productPicture;
     }
 }
