@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/rowProductConatiner"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:focusable="true"
+    android:layout_marginBottom="5dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/row_background_stroke">
+
+    <ImageView
+        android:id="@+id/rowProductImage"
+        android:layout_width="120dp"
+        android:layout_height="160dp"
+        android:layout_margin="16dp"
+        android:background="@color/app_grey_stroke"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/rowProductName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd= "32dp"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textAlignment="viewStart"
+        android:includeFontPadding="false"
+        android:background="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/rowProductImage"
+        app:layout_constraintStart_toEndOf="@id/rowProductImage"
+        tools:text = "Product Name"/>
+
+    <TextView
+        android:id="@+id/rowProductShortDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd= "32dp"
+        android:layout_marginTop="8dp"
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        android:ellipsize="end"
+        android:maxLines="3"
+        android:textAlignment="viewStart"
+        android:includeFontPadding="false"
+        android:background="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rowProductName"
+        app:layout_constraintStart_toStartOf="@id/rowProductName"
+        tools:text = "Short product description regarding the stupid stuff that is going on in the world."/>
+
+    <TextView
+        android:id="@+id/rowProductCategoryLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/transparent"
+        android:includeFontPadding="false"
+        android:textAlignment="viewStart"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:text="Category: "
+        app:layout_constraintStart_toStartOf="@id/rowProductShortDescription"
+        app:layout_constraintTop_toBottomOf="@id/rowProductShortDescription"/>
+
+    <TextView
+        android:id="@+id/rowProductCategoryDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd= "32dp"
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textAlignment="viewStart"
+        android:includeFontPadding="false"
+        android:background="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/rowProductCategoryLabel"
+        app:layout_constraintStart_toEndOf="@id/rowProductCategoryLabel"
+        tools:text = "Clothes"/>
+
+    <TextView
+        android:id="@+id/rowProductCategoryPriceLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:includeFontPadding="false"
+        android:text="Price: "
+        android:textAlignment="viewStart"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@id/rowProductCategoryLabel"
+        app:layout_constraintTop_toBottomOf="@id/rowProductCategoryLabel" />
+
+    <TextView
+        android:id="@+id/rowProductCategoryPriceDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd= "32dp"
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textAlignment="viewStart"
+        android:includeFontPadding="false"
+        android:background="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/rowProductCategoryPriceLabel"
+        app:layout_constraintStart_toEndOf="@id/rowProductCategoryPriceLabel"
+        tools:text = "12.34$"/>
+
+    <Button
+        android:id="@+id/rowProductCategoryAddToCartButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/green_button"
+        android:text="Add to cart"
+        android:textColor="@color/app_white"
+        android:layout_marginStart="42dp"
+        android:layout_marginEnd="42dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/rowProductImage"
+        app:layout_constraintStart_toEndOf="@id/rowProductImage"
+        app:layout_constraintTop_toBottomOf="@id/rowProductCategoryPriceDescription" />
+</androidx.constraintlayout.widget.ConstraintLayout>

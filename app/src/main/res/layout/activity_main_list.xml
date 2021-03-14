@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/listScreenTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_products_list"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginTop="16dp"
+        android:includeFontPadding="false"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <View
+        android:id="@+id/listScreenTitleBorder"
+        android:layout_width="0dp"
+        android:layout_height="0.5dp"
+        android:background="@color/app_grey_stroke"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@id/listScreenTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <ImageView
+        android:id="@+id/listScreenCartImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingStart="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingEnd="30dp"
+        android:clickable="true"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/cart_button"
+        android:src="@drawable/ic_shopping_cart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/listScreenTitleBorder"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/listScreenCartCounter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="9dp"
+        android:textSize="16sp"
+        android:textColor="@color/app_white"
+        android:background="@android:color/transparent"
+        android:includeFontPadding="false"
+        app:layout_constraintBottom_toBottomOf="@id/listScreenCartImage"
+        app:layout_constraintEnd_toEndOf="@id/listScreenCartImage"
+        app:layout_constraintTop_toTopOf="@id/listScreenCartImage"
+        tools:text = "3"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listScreenRecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        app:layout_constraintTop_toBottomOf="@id/listScreenTitleBorder"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <ImageButton
+        android:id="@+id/listScreenNewProductButton"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/ic_add_button"
+        android:background="@drawable/oval_background"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="20dp"
+        android:layout_margin="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
