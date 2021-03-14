@@ -5,12 +5,12 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.products_list_row.view.*
 
 class MainListActivityAdapterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    fun setData(basket: Product, addToBasketClickListener: () -> Unit, rowClickListener: (Product) -> Unit) {
+    fun setData(product: Product, addToBasketClickListener: () -> Unit, rowClickListener: (Product) -> Unit) {
 
-        itemView.rowProductName.text = basket.get_productName()
-        itemView.rowProductShortDescription.text = basket.get_shortDescription()
-        itemView.rowProductCategoryDescription.text = basket.get_category()
-        itemView.rowProductCategoryPriceDescription.text = basket.get_productPrice().toString()
+        itemView.rowProductName.text = product.get_productName()
+        itemView.rowProductShortDescription.text = product.get_shortDescription()
+        itemView.rowProductCategoryDescription.text = product.get_category()
+        itemView.rowProductCategoryPriceDescription.text = product.get_productPrice().toString()
 
         itemView.rowProductCategoryAddToCartButton.setOnClickListener {
 
@@ -19,7 +19,7 @@ class MainListActivityAdapterViewHolder(itemView: View) : RecyclerView.ViewHolde
 
         itemView.rowProductConatiner.setOnClickListener {
 
-            rowClickListener(basket)
+            rowClickListener(product)
         }
     }
 }

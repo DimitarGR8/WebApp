@@ -120,6 +120,23 @@
         tools:text="15.99"/>
 
     <Button
+        android:id="@+id/productDeleteButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/green_button"
+        android:backgroundTint="@android:color/holo_red_light"
+        android:text="Delete product"
+        android:textColor="@color/app_white"
+        android:textSize="10sp"
+        android:visibility="gone"
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintBottom_toTopOf="@+id/productBackButton"
+        app:layout_constraintStart_toStartOf="@+id/productDateAdded"
+        app:layout_constraintTop_toBottomOf="@+id/productDateAdded"
+        app:layout_constraintWidth_percent="0.3" />
+
+    <Button
         android:id="@+id/productBackButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

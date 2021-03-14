@@ -35,7 +35,7 @@ class MainListActivity : BaseActivity(), View.OnClickListener {
     override fun onClick(view: View?) {
         when (view) {
             listScreenNewProductButton -> {
-                NavigationUtils().moveToCreateProductActivity(this)
+                NavigationUtils().moveToCreateProductActivity(this, isThisAdmin)
             }
         }
     }

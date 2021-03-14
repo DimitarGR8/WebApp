@@ -50,7 +50,7 @@ public class CreateProductActivity extends BaseActivity implements View.OnClickL
         productToBeCreated.set_mainDescription(String.valueOf(productLongDescription.getText()));
         productToBeCreated.set_dateAdded("15.15.15");
         productToBeCreated.set_category(String.valueOf(productCategory.getText()));
-        productToBeCreated.set_productPrice(15.15);
+        productToBeCreated.set_productPrice(Double.parseDouble(String.valueOf(productPrice.getText())));
         productToBeCreated.set_productPicture("");
 
         DatabaseOperations databaseOperations = new DatabaseOperations(this);
@@ -59,7 +59,7 @@ public class CreateProductActivity extends BaseActivity implements View.OnClickL
 
     private void goBackToMainScreen() {
         NavigationUtils navUtils = new NavigationUtils();
-        boolean isThisAdmin = new BaseActivity().isThisAdmin();
+        boolean isThisAdmin = getIntent().getBooleanExtra("isThisAdmin", false);
         navUtils.moveToMainListActivity(this, isThisAdmin);
     }
 }

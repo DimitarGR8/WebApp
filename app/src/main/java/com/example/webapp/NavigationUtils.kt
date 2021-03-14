@@ -29,10 +29,11 @@ class NavigationUtils {
         context.startActivity(mapActivityIntent)
     }
 
-    fun moveToCreateProductActivity(context: Context) {
+    fun moveToCreateProductActivity(context: Context, isThisAdmin: Boolean) {
         val mapActivityIntent = Intent(context, CreateProductActivity::class.java).apply {
             this.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             this.flags = Intent.FLAG_ACTIVITY_NO_ANIMATION
+            this.putExtra("isThisAdmin", isThisAdmin)
         }
         context.startActivity(mapActivityIntent)
     }

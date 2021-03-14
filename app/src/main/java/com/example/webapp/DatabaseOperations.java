@@ -38,7 +38,7 @@ public class DatabaseOperations extends AppDatabase{
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
 
-        // looping through all rows and adding to list
+        // Looping through all rows and adding to list
         if (cursor.moveToFirst()) {
             do {
                 Product basket = new Product();
@@ -51,16 +51,16 @@ public class DatabaseOperations extends AppDatabase{
                 basket.set_dateAdded(cursor.getString(6));
                 basket.set_productPicture(cursor.getString(7));
 
-                // Adding contact to list
+                // Adding product to list
                 contactList.add(basket);
             } while (cursor.moveToNext());
         }
 
-        // return contact list
+        // Return products list
         return contactList;
     }
 
-    public Boolean updateContact(Product product) {
+    public boolean updateProduct(Product product) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues productValues = new ContentValues();
@@ -71,21 +71,19 @@ public class DatabaseOperations extends AppDatabase{
         productValues.put("dateAdded", product.get_dateAdded());
         productValues.put("productPrice", product.get_productPrice());
         productValues.put("category", product.get_category());
-        productValues.put("shortDescription", product.get_productPicture());
+        productValues.put("productPicture", product.get_productPicture());
 
-        // updating row
-        ///test
-
-        //database.update(DatabaseHelper.TABLE_NAME, contentValues, DatabaseHelper._ID + " = " + product.get_productId(), null);
-        return db.update(TABLE_NAME, productValues, PRODUCT_ID + " =? " + product.get_productId(), null) > 1;
-               // new String[] { String.valueOf(product.get_productId()) }) > 1;
+        // Updating row
+        boolean isSuccessful = db.update(TABLE_NAME, productValues, PRODUCT_ID + " = " + product.get_productId(), null) > 0;
+        db.close();
+        return isSuccessful;
     }
 
-    // Deleting single contact
-    public void deleteContact(Product basket) {
+    // Deleting single product
+    public boolean deleteProduct(int productId) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_NAME, PRODUCT_ID + " = ?",
-                new String[] { String.valueOf(basket.get_productId()) });
+        boolean isSuccessful = db.delete(TABLE_NAME, PRODUCT_ID + " = " + productId, null) > 0;
         db.close();
+        return isSuccessful;
     }
 }

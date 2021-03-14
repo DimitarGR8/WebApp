@@ -20,25 +20,33 @@ class ProductActivity: BaseActivity(), View.OnClickListener {
 
         if(intent.getBooleanExtra("isThisAdmin", false)) {
             productSaveNewDataButton.visibility = View.VISIBLE
+            productDeleteButton.visibility = View.VISIBLE
         } else {
             productSaveNewDataButton.visibility = View.GONE
+            productDeleteButton.visibility = View.GONE
         }
 
         setProductData()
 
         productSaveNewDataButton.setOnClickListener(this)
         productBackButton.setOnClickListener(this)
+        productDeleteButton.setOnClickListener(this)
     }
 
     override fun onClick(view: View?) {
         when (view) {
             productSaveNewDataButton -> {
-                if(updateContact()) {
+                if (updateProduct()) {
                     goBackToMainListActivity()
                 }
             }
             productBackButton -> {
                 goBackToMainListActivity()
+            }
+            productDeleteButton -> {
+                if (deleteProduct()) {
+                    goBackToMainListActivity()
+                }
             }
         }
     }
@@ -60,7 +68,7 @@ class ProductActivity: BaseActivity(), View.OnClickListener {
         productPrice.setText(productPriceText.toString())
     }
 
-    private fun updateContact() : Boolean {
+    private fun updateProduct() : Boolean {
         val productToUpdate = Product(prodcutIdText,
             productName.text.toString(),
             productCategory.text.toString(),
@@ -69,7 +77,11 @@ class ProductActivity: BaseActivity(), View.OnClickListener {
             productPrice.text.toString().toDouble(),
             productDateAdded.text.toString(),
             "" )
-        return DatabaseOperations(this).updateContact(productToUpdate)
+        return DatabaseOperations(this).updateProduct(productToUpdate)
+    }
+
+    private fun deleteProduct () : Boolean {
+        return DatabaseOperations(this).deleteProduct(prodcutIdText)
     }
 
     private fun goBackToMainListActivity() {
