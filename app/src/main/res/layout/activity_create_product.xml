@@ -92,50 +92,112 @@
         app:layout_constraintTop_toBottomOf="@id/createProductCategory"
         tools:text="15.02.2020" />
 
-    <com.google.android.material.textfield.TextInputEditText
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/createProductName"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:background="@android:color/transparent"
-        android:hint="Product Name"
-        android:includeFontPadding="false"
-        android:textAlignment="center"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/checkout_form_fields_background"
+        android:paddingStart="20dp"
+        android:paddingTop="11dp"
+        android:paddingEnd="20dp"
+        android:textColorHint="@color/black"
+        app:hintTextAppearance="@style/TextAppearance.App.TextInputLayoutFirst"
         app:layout_constraintEnd_toEndOf="@id/createProductImage"
         app:layout_constraintStart_toStartOf="@id/createProductImage"
-        app:layout_constraintTop_toBottomOf="@id/createProductImage" />
+        app:layout_constraintTop_toBottomOf="@id/createProductImage" >
 
-    <com.google.android.material.textfield.TextInputEditText
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/createProductNameInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:backgroundTint="@android:color/transparent"
+            android:hint="Product name"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingTop="5dp"
+            android:paddingBottom="11dp"
+            android:textColor="@color/app_green"
+            android:textCursorDrawable="@drawable/cursor_color"
+            android:textSize="12sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/createProductShortDescription"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="32dp"
-        android:background="@android:color/transparent"
-        android:hint="This is the short description of the product. Limited only to 100 chars."
-        android:maxLength="100"
-        android:maxLines="2"
-        android:textAlignment="center"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/checkout_form_fields_background"
+        android:paddingStart="20dp"
+        android:paddingTop="11dp"
+        android:paddingEnd="20dp"
+        android:textColorHint="@color/black"
+        app:hintTextAppearance="@style/TextAppearance.App.TextInputLayoutFirst"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/createProductName" />
+        app:layout_constraintTop_toBottomOf="@id/createProductName">
 
     <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/createProductShortDescriptionInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:backgroundTint="@android:color/transparent"
+            android:hint="Product short description"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:maxLines="2"
+            android:maxLength="100"
+            android:paddingTop="5dp"
+            android:paddingBottom="11dp"
+            android:textColor="@color/app_green"
+            android:textCursorDrawable="@drawable/cursor_color"
+            android:textSize="12sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/createProductLongDescription"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="32dp"
-        android:background="@android:color/transparent"
-        android:hint="This is the long description of the product. Limited to 400 chars."
-        android:maxLength="400"
-        android:maxLines="2"
-        android:textAlignment="center"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/checkout_form_fields_background"
+        android:paddingStart="20dp"
+        android:paddingTop="11dp"
+        android:paddingEnd="20dp"
+        android:textColorHint="@color/black"
+        app:hintTextAppearance="@style/TextAppearance.App.TextInputLayoutFirst"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/createProductShortDescription" />
+        app:layout_constraintTop_toBottomOf="@id/createProductShortDescription">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/createProductLongDescriptionInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:backgroundTint="@android:color/transparent"
+            android:hint="Product main description"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:maxLines="3"
+            android:maxLength="400"
+            android:paddingTop="5dp"
+            android:paddingBottom="11dp"
+            android:textColor="@color/app_green"
+            android:textCursorDrawable="@drawable/cursor_color"
+            android:textSize="12sp" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/createProductCategory"
@@ -147,16 +209,31 @@
         app:layout_constraintStart_toStartOf="@id/createProductLongDescription"
         app:layout_constraintTop_toBottomOf="@id/createProductLongDescription" />
 
+    <TextView
+        android:id="@+id/createProductPriceDolarSign"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$"
+        android:textColor="@color/app_green"
+        android:textStyle="bold"
+        android:includeFontPadding="false"
+        android:layout_marginTop="5dp"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@id/createProductLongDescription"
+        app:layout_constraintTop_toBottomOf="@id/createProductLongDescription"/>
+
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/createProductPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
         android:background="@android:color/transparent"
-        android:hint="00.00$"
+        android:hint="00.00"
         android:maxLength="6"
         android:maxLines="1"
         android:textAlignment="viewEnd"
-        app:layout_constraintEnd_toEndOf="@id/createProductLongDescription"
-        app:layout_constraintTop_toBottomOf="@id/createProductLongDescription" />
+        android:textColor="@color/app_green"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/createProductPriceDolarSign"
+        app:layout_constraintBottom_toBottomOf="@id/createProductPriceDolarSign"
+        app:layout_constraintTop_toTopOf="@id/createProductPriceDolarSign" />
 </androidx.constraintlayout.widget.ConstraintLayout>

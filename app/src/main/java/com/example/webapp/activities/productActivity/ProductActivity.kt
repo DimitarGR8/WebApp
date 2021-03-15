@@ -125,10 +125,10 @@ class ProductActivity: BaseActivity(), View.OnClickListener {
         productPriceText = intent.getStringExtra("productPrice").toString()
         productImageText = intent.getStringExtra("productPicture").toString()
 
-        productName.setText(productNameText)
+        productNameInput.setText(productNameText)
         productCategory.text = productCategoryText
-        productShortDescription.setText(productShortDescriptionText)
-        productLongDescription.setText(productLongDescriptionText)
+        productShortDescriptionInput.setText(productShortDescriptionText)
+        productLongDescriptionInput.setText(productLongDescriptionText)
         productDateAdded.text = productAddedDateText
         productPrice.setText(productPriceText)
         productImage.setImageBitmap(BitmapConverter.convertFromString(productImageText))
@@ -149,10 +149,10 @@ class ProductActivity: BaseActivity(), View.OnClickListener {
         }
 
         val productToUpdate = Product(productIdText,
-                productName.text.toString(),
+                productNameInput.text.toString(),
                 productCategory.text.toString(),
-                productShortDescription.text.toString(),
-                productLongDescription.text.toString(),
+                productShortDescriptionInput.text.toString(),
+                productLongDescriptionInput.text.toString(),
                 productPrice.text.toString(),
                 productDateAdded.text.toString(),
                 BitmapConverter.convertFromBitmap(bitmapString.value)
@@ -183,33 +183,14 @@ class ProductActivity: BaseActivity(), View.OnClickListener {
 
     private fun setAdminViewsProperties() {
         productAddImageCameraButton.isEnabled = true
-//        productAddImageCameraButton.visibility = View.VISIBLE
-//        productSaveNewDataButton.visibility = View.VISIBLE
-//        productAddImageGalleryButton.visibility = View.VISIBLE
-//        productDeleteButton.visibility = View.VISIBLE
-//
         setVisibilityEnabled(arrayListOf(productAddImageCameraButton, productSaveNewDataButton, productAddImageGalleryButton, productDeleteButton))
         setFocusabilityEnabled(arrayListOf(productName, productShortDescription, productLongDescription, productPrice))
-
-//        productName.isFocusable = true
-//        productShortDescription.isFocusable = true
-//        productLongDescription.isFocusable = true
-//        productPrice.isFocusable = true
     }
 
     private fun setUserViewsProperties() {
         productAddImageCameraButton.isEnabled = false
-//        productAddImageCameraButton.visibility = View.GONE
-//        productAddImageGalleryButton.visibility = View.GONE
-//        productSaveNewDataButton.visibility = View.GONE
-//        productDeleteButton.visibility = View.GONE
         setVisibilityGone(arrayListOf(productAddImageCameraButton, productSaveNewDataButton, productAddImageGalleryButton, productDeleteButton))
         setFocusabilityDisabled(arrayListOf(productName, productShortDescription, productLongDescription, productPrice))
-//        productName.isFocusable = false
-//        productShortDescription.isFocusable = false
-//        productLongDescription.isFocusable = false
-//        productPrice.isFocusable = false
-
     }
 
     private fun setFocusabilityEnabled(arrayList: ArrayList<View>) {

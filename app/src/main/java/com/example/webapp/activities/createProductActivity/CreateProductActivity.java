@@ -84,9 +84,9 @@ public class CreateProductActivity extends BaseActivity implements View.OnClickL
         createNewProductButton = findViewById(R.id.createProductAddButton);
         createProductAddImageButton = findViewById(R.id.createProductAddImageButton);
         productImage = findViewById(R.id.createProductImage);
-        productName = findViewById(R.id.createProductName);
-        productShortDescription = findViewById(R.id.createProductShortDescription);
-        productLongDescription = findViewById(R.id.createProductLongDescription);
+        productName = findViewById(R.id.createProductNameInput);
+        productShortDescription = findViewById(R.id.createProductShortDescriptionInput);
+        productLongDescription = findViewById(R.id.createProductLongDescriptionInput);
         productCategory = findViewById(R.id.createProductCategory);
         productPrice = findViewById(R.id.createProductPrice);
     }
@@ -106,7 +106,7 @@ public class CreateProductActivity extends BaseActivity implements View.OnClickL
     }
 
     private String getDate() {
-        DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss", Locale.getDefault());
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault());
         Date date = new Date();
         return dateFormat.format(date);
     }

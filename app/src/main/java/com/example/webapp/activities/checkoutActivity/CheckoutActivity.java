@@ -12,6 +12,7 @@ import org.jetbrains.annotations.Nullable;
 public class CheckoutActivity extends BaseActivity implements View.OnClickListener {
 
     Button checkoutBackButton;
+    Button checkoutFinalizeOrderButton;
     TextInputEditText checkoutInputFieldFirstName;
     TextInputEditText checkoutInputFieldLastName;
     TextInputEditText checkoutInputFieldEmail;
@@ -49,5 +50,6 @@ public class CheckoutActivity extends BaseActivity implements View.OnClickListen
         checkoutInputFieldPostalCode = findViewById(R.id.checkoutInputFieldPostalCode);
 
         checkoutBackButton = findViewById(R.id.checkoutBackButton);
+        checkoutFinalizeOrderButton = findViewById(R.id.checkoutFinalizeOrderButton);
     }
 }

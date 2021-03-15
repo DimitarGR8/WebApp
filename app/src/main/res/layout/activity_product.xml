@@ -43,7 +43,7 @@
         android:textSize="10sp"
         android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@id/productBackButton"
-        app:layout_constraintStart_toStartOf="@id/productDateAdded"
+        app:layout_constraintStart_toStartOf="@id/productDateAddedLabel"
         app:layout_constraintTop_toBottomOf="@id/productDateAdded"
         app:layout_constraintVertical_bias="0"
         app:layout_constraintWidth_percent="0.3" />
@@ -77,51 +77,112 @@
         app:layout_constraintTop_toTopOf="@id/productBackButton"
         app:layout_constraintWidth_percent="0.4" />
 
-    <EditText
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/productName"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:background="@android:color/transparent"
-        android:includeFontPadding="false"
-        android:textAlignment="center"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/checkout_form_fields_background"
+        android:paddingStart="20dp"
+        android:paddingTop="11dp"
+        android:paddingEnd="20dp"
+        android:textColorHint="@color/black"
+        app:hintTextAppearance="@style/TextAppearance.App.TextInputLayoutFirst"
         app:layout_constraintEnd_toEndOf="@id/productImage"
         app:layout_constraintStart_toStartOf="@id/productImage"
-        app:layout_constraintTop_toBottomOf="@id/productImage"
-        tools:text="Product Name" />
+        app:layout_constraintTop_toBottomOf="@id/productImage">
 
-    <EditText
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/productNameInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:backgroundTint="@android:color/transparent"
+            android:hint="Product name"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingTop="5dp"
+            android:paddingBottom="11dp"
+            android:textColor="@color/app_green"
+            android:textCursorDrawable="@drawable/cursor_color"
+            android:textSize="12sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/productShortDescription"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="32dp"
-        android:background="@android:color/transparent"
-        android:maxLength="100"
-        android:maxLines="2"
-        android:textAlignment="center"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/checkout_form_fields_background"
+        android:paddingStart="20dp"
+        android:paddingTop="11dp"
+        android:paddingEnd="20dp"
+        android:textColorHint="@color/black"
+        app:hintTextAppearance="@style/TextAppearance.App.TextInputLayoutFirst"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/productName"
-        tools:text="This is the short description of the product. Limited only to 100 chars." />
+        app:layout_constraintTop_toBottomOf="@id/productName">
 
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/productShortDescriptionInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:backgroundTint="@android:color/transparent"
+            android:hint="Product short description"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:maxLines="2"
+            android:maxLength="100"
+            android:paddingTop="5dp"
+            android:paddingBottom="11dp"
+            android:textColor="@color/app_green"
+            android:textCursorDrawable="@drawable/cursor_color"
+            android:textSize="12sp" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/productLongDescription"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="32dp"
-        android:background="@android:color/transparent"
-        android:maxLength="400"
-        android:maxLines="2"
-        android:textAlignment="center"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/checkout_form_fields_background"
+        android:paddingStart="20dp"
+        android:paddingTop="11dp"
+        android:paddingEnd="20dp"
+        android:textColorHint="@color/black"
+        app:hintTextAppearance="@style/TextAppearance.App.TextInputLayoutFirst"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/productShortDescription"
-        tools:text="This is the short description of the product. Limited to 400 chars." />
+        app:layout_constraintTop_toBottomOf="@id/productShortDescription">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/productLongDescriptionInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:backgroundTint="@android:color/transparent"
+            android:hint="Product main description"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:maxLines="3"
+            android:maxLength="400"
+            android:paddingTop="5dp"
+            android:paddingBottom="11dp"
+            android:textColor="@color/app_green"
+            android:textCursorDrawable="@drawable/cursor_color"
+            android:textSize="12sp" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <EditText
         android:id="@+id/productPrice"
@@ -132,6 +193,8 @@
         android:maxLength="6"
         android:maxLines="1"
         android:textAlignment="viewEnd"
+        android:textStyle="bold"
+        android:textColor="@color/app_green"
         app:layout_constraintBottom_toBottomOf="@id/productDolarLabel"
         app:layout_constraintEnd_toStartOf="@id/productDolarLabel"
         app:layout_constraintTop_toTopOf="@id/productDolarLabel"
@@ -176,20 +239,42 @@
         app:layout_constraintWidth_percent="0.5" />
 
     <TextView
+        android:id="@+id/productCategoryLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Category: "
+        android:layout_marginTop="5dp"
+        android:includeFontPadding="false"
+        app:layout_constraintStart_toStartOf="@id/productLongDescription"
+        app:layout_constraintTop_toBottomOf="@id/productLongDescription"/>
+
+    <TextView
         android:id="@+id/productCategory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:includeFontPadding="false"
+        app:layout_constraintTop_toTopOf="@id/productCategoryLabel"
+        app:layout_constraintBottom_toBottomOf="@id/productCategoryLabel"
+        app:layout_constraintStart_toEndOf="@id/productCategoryLabel"
+        tools:text="Clothes" />
+
+    <TextView
+        android:id="@+id/productDateAddedLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date: "
         android:layout_marginTop="5dp"
         app:layout_constraintStart_toStartOf="@id/productLongDescription"
-        app:layout_constraintTop_toBottomOf="@id/productLongDescription"
-        tools:text="Clothes" />
+        app:layout_constraintTop_toBottomOf="@id/productCategory" />
 
     <TextView
         android:id="@+id/productDateAdded"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/productLongDescription"
-        app:layout_constraintTop_toBottomOf="@id/productCategory"
+        android:includeFontPadding="false"
+        app:layout_constraintStart_toEndOf="@id/productDateAddedLabel"
+        app:layout_constraintTop_toTopOf="@id/productDateAddedLabel"
+        app:layout_constraintBottom_toBottomOf="@id/productDateAddedLabel"
         tools:text="15.02.2020" />
 
     <TextView
@@ -199,9 +284,19 @@
         android:layout_marginTop="5dp"
         android:includeFontPadding="false"
         android:text="$"
-        android:textColor="@color/black"
+        android:textColor="@color/app_green"
         android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@id/productLongDescription"
         app:layout_constraintTop_toBottomOf="@id/productLongDescription" />
+
+    <TextView
+        android:id="@+id/productPriceLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Price: "
+        app:layout_constraintTop_toTopOf="@id/productPrice"
+        app:layout_constraintBottom_toBottomOf="@id/productPrice"
+        app:layout_constraintEnd_toStartOf="@id/productPrice"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
