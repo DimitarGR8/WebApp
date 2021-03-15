@@ -11,7 +11,7 @@ public class Product {
     String _mainDescription;
     Double _productPrice;
     String _dateAdded;
-    ByteArrayOutputStream _productPicture;
+    String _productPicture;
 
     public Product(int productId,
                    String productName,
@@ -20,7 +20,7 @@ public class Product {
                    String mainDescription,
                    Double productPrice,
                    String dateAdded,
-                   ByteArrayOutputStream productPicture) {
+                   String productPicture) {
 
         this._productId = productId;
         this._productName = productName;
@@ -92,11 +92,11 @@ public class Product {
         this._dateAdded = _dateAdded;
     }
 
-    public ByteArrayOutputStream get_productPicture() {
+    public String get_productPicture() {
         return _productPicture;
     }
 
-    public void set_productPicture(ByteArrayOutputStream _productPicture) {
+    public void set_productPicture(String _productPicture) {
         this._productPicture = _productPicture;
     }
 }

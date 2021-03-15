@@ -49,7 +49,7 @@ public class DatabaseOperations extends AppDatabase{
                 basket.set_mainDescription(cursor.getString(4));
                 basket.set_productPrice(cursor.getDouble(5));
                 basket.set_dateAdded(cursor.getString(6));
-                //basket.set_productPicture(cursor.getBlob(7));
+                basket.set_productPicture(cursor.getString(7));
 
                 // Adding product to list
                 contactList.add(basket);
@@ -71,7 +71,7 @@ public class DatabaseOperations extends AppDatabase{
         productValues.put("dateAdded", product.get_dateAdded());
         productValues.put("productPrice", product.get_productPrice());
         productValues.put("category", product.get_category());
-        //productValues.put("productPicture", product.get_productPicture());
+        productValues.put("productPicture", product.get_productPicture());
 
         // Updating row
         boolean isSuccessful = db.update(TABLE_NAME, productValues, PRODUCT_ID + " = " + product.get_productId(), null) > 0;

@@ -12,6 +12,9 @@ class MainListActivityAdapterViewHolder(itemView: View) : RecyclerView.ViewHolde
         itemView.rowProductCategoryDescription.text = product.get_category()
         itemView.rowProductCategoryPriceDescription.text = product.get_productPrice().toString()
 
+        val aa = product.get_productPicture()
+        itemView.rowProductImage.setImageBitmap(BitmapConverter.convertFromString(product.get_productPicture()))
+
         itemView.rowProductCategoryAddToCartButton.setOnClickListener {
 
             addToBasketClickListener()

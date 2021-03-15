@@ -5,28 +5,27 @@ import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
-import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.View
-import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.activity_product.*
-import java.io.ByteArrayOutputStream
 
 class ProductActivity: BaseActivity(), View.OnClickListener {
 
     lateinit var viewModel: ImageViewModel
 
-    private var prodcutIdText = 0
+    private var productIdText = 0
     private lateinit var productNameText: String
     private lateinit var productCategoryText: String
     private lateinit var productShortDescriptionText: String
     private lateinit var productLongDescriptionText: String
     private lateinit var productAddedDateText: String
+    private lateinit var productImageText: String
     private var productPriceText = 0.0
 
     val permissions = arrayOf(Manifest.permission.CAMERA)
@@ -72,7 +71,7 @@ class ProductActivity: BaseActivity(), View.OnClickListener {
                 }
             }
             productAddImageButton -> {
-                if(allPermissionsGranted()) {
+                if (allPermissionsGranted()) {
                     startCamera()
                 } else {
                     ActivityCompat.requestPermissions(this, permissions, RC_PERMISSION)
@@ -94,13 +93,14 @@ class ProductActivity: BaseActivity(), View.OnClickListener {
     }
 
     private fun setProductData() {
-        prodcutIdText = intent.getIntExtra("productId", 0)
+        productIdText = intent.getIntExtra("productId", 0)
         productNameText = intent.getStringExtra("productName").toString()
         productCategoryText = intent.getStringExtra("productCategory").toString()
         productShortDescriptionText = intent.getStringExtra("productShortDescription").toString()
         productLongDescriptionText = intent.getStringExtra("productLongDescription").toString()
         productAddedDateText = intent.getStringExtra("productAddedDate").toString()
         productPriceText = intent.getDoubleExtra("productPrice", 00.00)
+        productImageText = intent.getStringExtra("productPicture").toString()
 
         productName.setText(productNameText)
         productCategory.text = productCategoryText
@@ -108,34 +108,35 @@ class ProductActivity: BaseActivity(), View.OnClickListener {
         productLongDescription.setText(productLongDescriptionText)
         productDateAdded.text = productAddedDateText
         productPrice.setText(productPriceText.toString())
+        productImage.setImageBitmap(BitmapConverter.convertFromString(productImageText))
 
-        viewModel.bitmap.observe(this, {
-            productImage.setImageBitmap(it)
-        })
+//        viewModel.bitmap.observe(this, {
+//            productImage.setImageBitmap(it)
+//        })
     }
 
-    private fun imageToBitmap(image: ImageView): ByteArrayOutputStream {
-        val bitmap = (image.drawable as BitmapDrawable).bitmap
-        val stream = ByteArrayOutputStream()
-        bitmap.compress(Bitmap.CompressFormat.PNG, 90, stream)
-
-        return stream
-    }
 
     private fun updateProduct() : Boolean {
-        val productToUpdate = Product(prodcutIdText,
-            productName.text.toString(),
-            productCategory.text.toString(),
-            productShortDescription.text.toString(),
-            productLongDescription.text.toString(),
-            productPrice.text.toString().toDouble(),
-            productDateAdded.text.toString(),
-            imageToBitmap(productImage))
+        val bitmapString: MutableLiveData<Bitmap> = MutableLiveData()
+        viewModel.bitmap.observe(this, {
+            bitmapString.value = it
+        })
+
+        val productToUpdate = Product(productIdText,
+                productName.text.toString(),
+                productCategory.text.toString(),
+                productShortDescription.text.toString(),
+                productLongDescription.text.toString(),
+                productPrice.text.toString().toDouble(),
+                productDateAdded.text.toString(),
+                BitmapConverter.convertFromBitmap(bitmapString.value)
+        )
+
         return DatabaseOperations(this).updateProduct(productToUpdate)
     }
 
     private fun deleteProduct () : Boolean {
-        return DatabaseOperations(this).deleteProduct(prodcutIdText)
+        return DatabaseOperations(this).deleteProduct(productIdText)
     }
 
     private fun goBackToMainListActivity() {

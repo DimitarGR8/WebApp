@@ -24,6 +24,7 @@ class NavigationUtils {
             this.putExtra("productLongDescription", basket.get_mainDescription())
             this.putExtra("productAddedDate", basket.get_dateAdded())
             this.putExtra("productPrice", basket.get_productPrice())
+            this.putExtra("productPicture", basket.get_productPicture())
             this.putExtra("isThisAdmin", isThisAdmin)
         }
         context.startActivity(mapActivityIntent)
