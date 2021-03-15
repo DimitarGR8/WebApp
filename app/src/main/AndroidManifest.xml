@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity
-            android:name=".StartScreen">
+            android:name=".activities.startScreen.StartScreenActivity">
             <intent-filter>
                 <action
                     android:name="android.intent.action.MAIN"
@@ -24,19 +24,24 @@
         </activity>
 
         <activity
-            android:name=".MainListActivity"
+            android:name=".activities.mainListActivity.MainListActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:configChanges="orientation"
             android:screenOrientation="portrait"/>
 
         <activity
-            android:name=".ProductActivity"
+            android:name=".activities.productActivity.ProductActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:configChanges="orientation"
             android:screenOrientation="portrait"/>
 
 
-        <activity android:name=".CreateProductActivity"
+        <activity android:name=".activities.createProductActivity.CreateProductActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".activities.shoppingCart.ShoppingCartActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:configChanges="orientation"
             android:screenOrientation="portrait"/>

@@ -1,4 +1,4 @@
-package com.example.webapp;
+package com.example.webapp.utils;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

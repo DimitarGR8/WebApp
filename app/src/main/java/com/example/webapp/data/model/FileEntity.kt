@@ -1,4 +1,4 @@
-package com.example.webapp.data
+package com.example.webapp.data.model
 
 import java.io.File
 

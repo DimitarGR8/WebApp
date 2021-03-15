@@ -1,4 +1,4 @@
-package com.example.webapp;
+package com.example.webapp.data.database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -21,7 +21,6 @@ public class AppDatabase extends SQLiteOpenHelper {
 
     public AppDatabase(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
-
     }
 
     @Override
@@ -32,7 +31,7 @@ public class AppDatabase extends SQLiteOpenHelper {
                 PRODUCT_CATEGORY + " TEXT, " +
                 PRODUCT_SHORT_DESCRIPTION + " TEXT, " +
                 PRODUCT_MAIN_DESCRIPTION + " TEXT, " +
-                PRODUCT_PRICE + " REAL, " +
+                PRODUCT_PRICE + " TEXT, " +
                 PRODUCT_DATE_ADDED + " TEXT, " +
                 PRODUCT_PICTURE + " TEXT)";
 

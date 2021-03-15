@@ -1,4 +1,4 @@
-package com.example.webapp;
+package com.example.webapp.activities.createProductActivity;
 
 import android.Manifest;
 import android.app.Activity;
@@ -11,28 +11,25 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.webapp.utils.BitmapConverter;
+import com.example.webapp.data.database.DatabaseOperations;
+import com.example.webapp.activities.ImageMainListViewModel;
+import com.example.webapp.R;
+import com.example.webapp.activities.baseActivity.BaseActivity;
+import com.example.webapp.data.model.Product;
+import com.example.webapp.utils.NavigationUtils;
 import com.google.android.material.textfield.TextInputEditText;
-import java.io.ByteArrayOutputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
-import java.util.Objects;
-import java.util.Observable;
-
-import static java.nio.file.Paths.get;
 
 
 public class CreateProductActivity extends BaseActivity implements View.OnClickListener {
@@ -45,19 +42,17 @@ public class CreateProductActivity extends BaseActivity implements View.OnClickL
     TextInputEditText productCategory;
     TextInputEditText productPrice;
     ImageView productImage;
-    SimpleDateFormat simpleDateFormat;
-    ImageViewModel viewModel;
+    ImageMainListViewModel viewModel;
     MutableLiveData<Bitmap> bitmapToSet = new MutableLiveData<>();
 
     String[] permissions = {Manifest.permission.CAMERA};
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_product);
 
-        viewModel = new ViewModelProvider(this).get(ImageViewModel.class);
+        viewModel = new ViewModelProvider(this).get(ImageMainListViewModel.class);
         initViews();
 
 
@@ -104,7 +99,7 @@ public class CreateProductActivity extends BaseActivity implements View.OnClickL
         productToBeCreated.set_mainDescription(String.valueOf(productLongDescription.getText()));
         productToBeCreated.set_dateAdded(getDate());
         productToBeCreated.set_category(String.valueOf(productCategory.getText()));
-        productToBeCreated.set_productPrice(Double.parseDouble(String.valueOf(productPrice.getText())));
+        productToBeCreated.set_productPrice(String.valueOf(productPrice.getText()));
         productToBeCreated.set_productPicture(BitmapConverter.convertFromBitmap(bitmapToSet.getValue()));
 
         DatabaseOperations databaseOperations = new DatabaseOperations(this);

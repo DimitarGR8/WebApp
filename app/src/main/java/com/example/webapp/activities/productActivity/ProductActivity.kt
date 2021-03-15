@@ -1,4 +1,4 @@
-package com.example.webapp
+package com.example.webapp.activities.productActivity
 
 import android.Manifest
 import android.app.Activity
@@ -13,11 +13,18 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
+import com.example.webapp.utils.BitmapConverter
+import com.example.webapp.data.database.DatabaseOperations
+import com.example.webapp.activities.ImageMainListViewModel
+import com.example.webapp.R
+import com.example.webapp.activities.baseActivity.BaseActivity
+import com.example.webapp.data.model.Product
+import com.example.webapp.utils.NavigationUtils
 import kotlinx.android.synthetic.main.activity_product.*
 
 class ProductActivity: BaseActivity(), View.OnClickListener {
 
-    lateinit var viewModel: ImageViewModel
+    lateinit var viewModel: ImageMainListViewModel
 
     private var productIdText = 0
     private lateinit var productNameText: String
@@ -26,7 +33,7 @@ class ProductActivity: BaseActivity(), View.OnClickListener {
     private lateinit var productLongDescriptionText: String
     private lateinit var productAddedDateText: String
     private lateinit var productImageText: String
-    private var productPriceText = 0.0
+    private lateinit var productPriceText: String
 
     val permissions = arrayOf(Manifest.permission.CAMERA)
 
@@ -34,7 +41,7 @@ class ProductActivity: BaseActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product)
 
-        viewModel = ViewModelProvider(this).get(ImageViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(ImageMainListViewModel::class.java)
 
         // Get the list of files
         viewModel.getFileList()
@@ -103,7 +110,7 @@ class ProductActivity: BaseActivity(), View.OnClickListener {
         productShortDescriptionText = intent.getStringExtra("productShortDescription").toString()
         productLongDescriptionText = intent.getStringExtra("productLongDescription").toString()
         productAddedDateText = intent.getStringExtra("productAddedDate").toString()
-        productPriceText = intent.getDoubleExtra("productPrice", 00.00)
+        productPriceText = intent.getStringExtra("productPrice").toString()
         productImageText = intent.getStringExtra("productPicture").toString()
 
         productName.setText(productNameText)
@@ -135,7 +142,7 @@ class ProductActivity: BaseActivity(), View.OnClickListener {
                 productCategory.text.toString(),
                 productShortDescription.text.toString(),
                 productLongDescription.text.toString(),
-                productPrice.text.toString().toDouble(),
+                productPrice.text.toString(),
                 productDateAdded.text.toString(),
                 BitmapConverter.convertFromBitmap(bitmapString.value)
         )

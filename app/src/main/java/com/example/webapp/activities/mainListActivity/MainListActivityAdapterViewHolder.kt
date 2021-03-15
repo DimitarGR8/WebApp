@@ -1,11 +1,13 @@
-package com.example.webapp
+package com.example.webapp.activities.mainListActivity
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import com.example.webapp.utils.BitmapConverter
+import com.example.webapp.data.model.Product
 import kotlinx.android.synthetic.main.products_list_row.view.*
 
 class MainListActivityAdapterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-    fun setData(product: Product, addToBasketClickListener: () -> Unit, rowClickListener: (Product) -> Unit) {
+    fun setData(product: Product, addToBasketClickListener: (Product) -> Unit, rowClickListener: (Product) -> Unit) {
 
         itemView.rowProductName.text = product.get_productName()
         itemView.rowProductShortDescription.text = product.get_shortDescription()
@@ -16,7 +18,7 @@ class MainListActivityAdapterViewHolder(itemView: View) : RecyclerView.ViewHolde
 
         itemView.rowProductCategoryAddToCartButton.setOnClickListener {
 
-            addToBasketClickListener()
+            addToBasketClickListener(product)
         }
 
         itemView.rowProductConatiner.setOnClickListener {

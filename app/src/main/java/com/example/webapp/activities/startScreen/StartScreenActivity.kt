@@ -1,11 +1,13 @@
-package com.example.webapp
+package com.example.webapp.activities.startScreen
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.example.webapp.R
+import com.example.webapp.utils.NavigationUtils
 import kotlinx.android.synthetic.main.activity_main.*
 
-class StartScreen : AppCompatActivity(), View.OnClickListener {
+class StartScreenActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -1,10 +1,10 @@
-package com.example.webapp
+package com.example.webapp.activities
 
 import android.app.Application
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import androidx.lifecycle.*
-import com.example.webapp.data.FileEntity
+import com.example.webapp.data.model.FileEntity
 import com.example.webapp.utils.EncryptionHelper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -15,11 +15,11 @@ import java.lang.Exception
 import java.text.SimpleDateFormat
 import java.util.*
 
-class ImageViewModel(application: Application) : AndroidViewModel(application) {
+class ImageMainListViewModel(application: Application) : AndroidViewModel(application) {
 
     private val context = application
     val bitmap: MutableLiveData<Bitmap> = MutableLiveData()
-    private val simpleDateFormat = SimpleDateFormat("HH:mm:ss", Locale.getDefault())
+    private val simpleDateFormat = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault())
     private val directory = File(context.filesDir, "images")
 
     val fileListEntity: MutableLiveData<ArrayList<FileEntity>> = MutableLiveData()
@@ -49,8 +49,6 @@ class ImageViewModel(application: Application) : AndroidViewModel(application) {
                         out.flush()
                         out.close()
                     }
-
-
                 }catch (e: Exception) {
 
                 }

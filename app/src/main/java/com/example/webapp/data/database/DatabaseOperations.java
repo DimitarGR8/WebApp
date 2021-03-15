@@ -1,13 +1,15 @@
-package com.example.webapp;
+package com.example.webapp.data.database;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.example.webapp.data.model.Product;
+
 import java.util.ArrayList;
 
-public class DatabaseOperations extends AppDatabase{
+public class DatabaseOperations extends AppDatabase {
     public DatabaseOperations(Context context) {
         super(context);
     }
@@ -47,7 +49,7 @@ public class DatabaseOperations extends AppDatabase{
                 basket.set_category(cursor.getString(2));
                 basket.set_shortDescription(cursor.getString(3));
                 basket.set_mainDescription(cursor.getString(4));
-                basket.set_productPrice(cursor.getDouble(5));
+                basket.set_productPrice(cursor.getString(5));
                 basket.set_dateAdded(cursor.getString(6));
                 basket.set_productPicture(cursor.getString(7));
 

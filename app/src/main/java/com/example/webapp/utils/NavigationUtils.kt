@@ -1,7 +1,14 @@
-package com.example.webapp
+package com.example.webapp.utils
 
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
+import com.example.webapp.activities.createProductActivity.CreateProductActivity
+import com.example.webapp.activities.mainListActivity.MainListActivity
+import com.example.webapp.activities.productActivity.ProductActivity
+import com.example.webapp.activities.shoppingCart.ShoppingCartActivity
+import com.example.webapp.data.model.Product
+
 
 class NavigationUtils {
     fun moveToMainListActivity(context: Context, isThisAdmin: Boolean) {
@@ -36,6 +43,19 @@ class NavigationUtils {
             this.flags = Intent.FLAG_ACTIVITY_NO_ANIMATION
             this.putExtra("isThisAdmin", isThisAdmin)
         }
+        context.startActivity(mapActivityIntent)
+    }
+
+    fun moveToShoppingCartActivity(context: Context, isThisAdmin: Boolean, shoppingCartList: ArrayList<Product>) {
+        val mapActivityIntent = Intent(context, ShoppingCartActivity::class.java).apply {
+            this.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            this.flags = Intent.FLAG_ACTIVITY_NO_ANIMATION
+            val bundle = Bundle()
+            bundle.putParcelableArrayList("shoppingCartList", shoppingCartList)
+            this.putExtras(bundle)
+            this.putExtra("isThisAdmin", isThisAdmin)
+        }
+
         context.startActivity(mapActivityIntent)
     }
 }

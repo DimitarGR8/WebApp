@@ -1,15 +1,16 @@
-package com.example.webapp;
+package com.example.webapp.data.model;
 
-import java.io.ByteArrayOutputStream;
+import android.os.Parcel;
+import android.os.Parcelable;
 
-public class Product {
+public class Product implements Parcelable {
 
     int _productId;
     String _productName;
     String _category;
     String _shortDescription;
     String _mainDescription;
-    Double _productPrice;
+    String _productPrice;
     String _dateAdded;
     String _productPicture;
 
@@ -18,7 +19,7 @@ public class Product {
                    String category,
                    String shortDescription,
                    String mainDescription,
-                   Double productPrice,
+                   String productPrice,
                    String dateAdded,
                    String productPicture) {
 
@@ -35,6 +36,29 @@ public class Product {
     public Product() {
 
     }
+
+    protected Product(Parcel in) {
+        _productId = in.readInt();
+        _productName = in.readString();
+        _category = in.readString();
+        _shortDescription = in.readString();
+        _mainDescription = in.readString();
+        _productPrice = in.readString();
+        _dateAdded = in.readString();
+        _productPicture = in.readString();
+    }
+
+    public static final Creator<Product> CREATOR = new Creator<Product>() {
+        @Override
+        public Product createFromParcel(Parcel in) {
+            return new Product(in);
+        }
+
+        @Override
+        public Product[] newArray(int size) {
+            return new Product[size];
+        }
+    };
 
     public int get_productId() {
         return _productId;
@@ -76,11 +100,11 @@ public class Product {
         this._mainDescription = _mainDescription;
     }
 
-    public Double get_productPrice() {
+    public String get_productPrice() {
         return _productPrice;
     }
 
-    public void set_productPrice(Double _productPrice) {
+    public void set_productPrice(String _productPrice) {
         this._productPrice = _productPrice;
     }
 
@@ -98,5 +122,22 @@ public class Product {
 
     public void set_productPicture(String _productPicture) {
         this._productPicture = _productPicture;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(_productId);
+        parcel.writeString(_productName);
+        parcel.writeString(_category);
+        parcel.writeString(_shortDescription);
+        parcel.writeString(_mainDescription);
+        parcel.writeString(_productPrice);
+        parcel.writeString(_dateAdded);
+        parcel.writeString(_productPicture);
     }
 }

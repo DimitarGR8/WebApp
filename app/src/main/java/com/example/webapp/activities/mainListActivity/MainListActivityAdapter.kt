@@ -1,11 +1,13 @@
-package com.example.webapp
+package com.example.webapp.activities.mainListActivity
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.webapp.data.model.Product
+import com.example.webapp.R
 
 class MainListActivityAdapter(var myDataSet: ArrayList<Product>,
-                              private val addToBacketClickListener: () -> Unit,
+                              private val addToBacketClickListener: (Product) -> Unit,
                               private val rowClickListener:(Product) -> Unit) : RecyclerView.Adapter<MainListActivityAdapterViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainListActivityAdapterViewHolder {
@@ -18,10 +20,10 @@ class MainListActivityAdapter(var myDataSet: ArrayList<Product>,
             return
         }
 
-        val matchData = myDataSet[position]
-        holder.setData(matchData,
+        val product = myDataSet[position]
+        holder.setData(product,
             addToBasketClickListener = {
-                addToBacketClickListener.invoke()
+                addToBacketClickListener.invoke(it)
         },
             rowClickListener = {
                 rowClickListener.invoke(it)
