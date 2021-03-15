@@ -52,7 +52,8 @@ class ProductActivity: BaseActivity(), View.OnClickListener {
         productSaveNewDataButton.setOnClickListener(this)
         productBackButton.setOnClickListener(this)
         productDeleteButton.setOnClickListener(this)
-        productAddImageButton.setOnClickListener(this)
+        productAddImageCameraButton.setOnClickListener(this)
+        productAddImageGalleryButton.setOnClickListener(this)
     }
 
     override fun onClick(view: View?) {
@@ -70,12 +71,15 @@ class ProductActivity: BaseActivity(), View.OnClickListener {
                     goBackToMainListActivity()
                 }
             }
-            productAddImageButton -> {
+            productAddImageCameraButton -> {
                 if (allPermissionsGranted()) {
                     startCamera()
                 } else {
                     ActivityCompat.requestPermissions(this, permissions, RC_PERMISSION)
                 }
+            }
+            productAddImageGalleryButton -> {
+
             }
         }
     }
@@ -110,9 +114,9 @@ class ProductActivity: BaseActivity(), View.OnClickListener {
         productPrice.setText(productPriceText.toString())
         productImage.setImageBitmap(BitmapConverter.convertFromString(productImageText))
 
-//        viewModel.bitmap.observe(this, {
-//            productImage.setImageBitmap(it)
-//        })
+        viewModel.bitmap.observe(this, {
+            productImage.setImageBitmap(it)
+        })
     }
 
 
@@ -121,6 +125,10 @@ class ProductActivity: BaseActivity(), View.OnClickListener {
         viewModel.bitmap.observe(this, {
             bitmapString.value = it
         })
+
+        if(bitmapString.value == null) {
+            bitmapString.value = BitmapConverter.convertFromString(productImageText)
+        }
 
         val productToUpdate = Product(productIdText,
                 productName.text.toString(),

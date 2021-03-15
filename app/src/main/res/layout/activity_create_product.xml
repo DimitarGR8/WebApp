@@ -1,78 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/createProductAddButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/green_button"
+        android:text="Create new product"
+        android:textColor="@color/app_white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/createProductDateAdded"
+        app:layout_constraintVertical_bias="1"
+        app:layout_constraintWidth_percent="0.5" />
 
     <ImageButton
         android:id="@+id/createProductAddImageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:src="@drawable/ic_add_button"
         android:background="@drawable/oval_background"
         android:backgroundTint="@color/black"
-        android:padding="3dp"
+        android:padding="4dp"
+        android:src="@drawable/ic_camera"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintBottom_toTopOf="@id/createProductAddImageGalleryButton"
         app:layout_constraintStart_toEndOf="@id/createProductImage"
-        app:layout_constraintTop_toTopOf="@id/createProductImage"
-        app:layout_constraintBottom_toBottomOf="@id/createProductImage"/>
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/createProductAddImageGalleryButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/oval_background"
+        android:backgroundTint="@color/black"
+        android:padding="4dp"
+        android:src="@drawable/ic_gallery"
+        android:layout_marginTop="15dp"
+        app:layout_constraintBottom_toTopOf="@id/createProductShortDescription"
+        app:layout_constraintStart_toStartOf="@id/createProductAddImageButton"
+        app:layout_constraintTop_toBottomOf="@id/createProductAddImageButton" />
 
     <ImageView
         android:id="@+id/createProductImage"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="16dp"
-        app:layout_constraintWidth_percent="0.5"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.3"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.5" />
+
+    <TextView
+        android:id="@+id/createProductDateAdded"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/createProductLongDescription"
+        app:layout_constraintTop_toBottomOf="@id/createProductCategory"
+        tools:text="15.02.2020" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/createProductName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:includeFontPadding="false"
         android:layout_marginTop="5dp"
-        android:textAlignment="center"
+        android:background="@android:color/transparent"
         android:hint="Product Name"
-        app:layout_constraintTop_toBottomOf="@id/createProductImage"
+        android:includeFontPadding="false"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@id/createProductImage"
         app:layout_constraintStart_toStartOf="@id/createProductImage"
-        app:layout_constraintEnd_toEndOf="@id/createProductImage" />
+        app:layout_constraintTop_toBottomOf="@id/createProductImage" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/createProductShortDescription"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:maxLines="2"
-        android:maxLength="100"
         android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
         android:layout_marginTop="5dp"
+        android:layout_marginEnd="32dp"
         android:background="@android:color/transparent"
-        android:textAlignment="center"
         android:hint="This is the short description of the product. Limited only to 100 chars."
-        app:layout_constraintTop_toBottomOf="@id/createProductName"
+        android:maxLength="100"
+        android:maxLines="2"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/createProductName" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/createProductLongDescription"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:maxLines="2"
-        android:maxLength="400"
         android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
         android:layout_marginTop="5dp"
+        android:layout_marginEnd="32dp"
         android:background="@android:color/transparent"
-        android:textAlignment="center"
         android:hint="This is the long description of the product. Limited to 400 chars."
-        app:layout_constraintTop_toBottomOf="@id/createProductShortDescription"
+        android:maxLength="400"
+        android:maxLines="2"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/createProductShortDescription" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/createProductCategory"
@@ -81,43 +118,20 @@
         android:layout_marginTop="5dp"
         android:background="@android:color/transparent"
         android:hint="Clothes"
-        app:layout_constraintTop_toBottomOf="@id/createProductLongDescription"
-        app:layout_constraintStart_toStartOf="@id/createProductLongDescription"/>
-
-    <TextView
-        android:id="@+id/createProductDateAdded"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/createProductCategory"
         app:layout_constraintStart_toStartOf="@id/createProductLongDescription"
-        tools:text = "15.02.2020"/>
+        app:layout_constraintTop_toBottomOf="@id/createProductLongDescription" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/createProductPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:maxLines="1"
-        android:maxLength="6"
-        android:textAlignment="viewEnd"
         android:layout_marginTop="5dp"
         android:background="@android:color/transparent"
         android:hint="00.00$"
-        app:layout_constraintTop_toBottomOf="@id/createProductLongDescription"
-        app:layout_constraintEnd_toEndOf="@id/createProductLongDescription" />
-
-    <Button
-        android:id="@+id/createProductAddButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/green_button"
-        android:text="Create new product"
-        android:textColor="@color/app_white"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintVertical_bias="1"
-        app:layout_constraintWidth_percent="0.5"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/createProductDateAdded" />
+        android:maxLength="6"
+        android:maxLines="1"
+        android:textAlignment="viewEnd"
+        app:layout_constraintEnd_toEndOf="@id/createProductLongDescription"
+        app:layout_constraintTop_toBottomOf="@id/createProductLongDescription" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

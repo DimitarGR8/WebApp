@@ -4,7 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-class MainListActivityAdapter(var myDataSet: ArrayList<Product>, private val addToBacketClickListener: () -> Unit, private val rowClickListener:(Product) -> Unit) : RecyclerView.Adapter<MainListActivityAdapterViewHolder>() {
+class MainListActivityAdapter(var myDataSet: ArrayList<Product>,
+                              private val addToBacketClickListener: () -> Unit,
+                              private val rowClickListener:(Product) -> Unit) : RecyclerView.Adapter<MainListActivityAdapterViewHolder>() {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainListActivityAdapterViewHolder {
         val mView = LayoutInflater.from(parent.context).inflate(R.layout.products_list_row, parent, false)
         return MainListActivityAdapterViewHolder(mView)

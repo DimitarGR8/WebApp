@@ -1,34 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageButton
-        android:id="@+id/productAddImageButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:background="@drawable/oval_background"
-        android:backgroundTint="@color/black"
-        android:padding="3dp"
-        android:src="@drawable/ic_add_button"
-        app:layout_constraintBottom_toBottomOf="@id/productImage"
-        app:layout_constraintStart_toEndOf="@id/productImage"
-        app:layout_constraintTop_toTopOf="@id/productImage" />
-
-    <ImageView
-        android:id="@+id/productImage"
+    <Button
+        android:id="@+id/productDeleteButton"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.3"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/green_button"
+        android:backgroundTint="@android:color/holo_red_light"
+        android:text="Delete product"
+        android:textColor="@color/app_white"
+        android:textSize="10sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/productBackButton"
+        app:layout_constraintStart_toStartOf="@+id/productDateAdded"
+        app:layout_constraintTop_toBottomOf="@+id/productDateAdded"
+        app:layout_constraintVertical_bias="0"
+        app:layout_constraintWidth_percent="0.3" />
+
+    <Button
+        android:id="@+id/productBackButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/green_button"
+        android:text="Back"
+        android:textColor="@color/app_white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/productSaveNewDataButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.5" />
+        app:layout_constraintTop_toBottomOf="@+id/productDateAdded"
+        app:layout_constraintVertical_bias="1"
+        app:layout_constraintWidth_percent="0.4" />
+
+    <Button
+        android:id="@+id/productSaveNewDataButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/green_button"
+        android:text="Save new changes"
+        android:textColor="@color/app_white"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/productBackButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/productBackButton"
+        app:layout_constraintTop_toTopOf="@+id/productBackButton"
+        app:layout_constraintWidth_percent="0.4" />
 
     <EditText
         android:id="@+id/productName"
@@ -76,6 +97,58 @@
         app:layout_constraintTop_toBottomOf="@id/productShortDescription"
         tools:text="This is the short description of the product. Limited to 400 chars." />
 
+    <EditText
+        android:id="@+id/productPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:includeFontPadding="false"
+        android:maxLength="6"
+        android:maxLines="1"
+        android:textAlignment="viewEnd"
+        app:layout_constraintBottom_toBottomOf="@id/productDolarLabel"
+        app:layout_constraintEnd_toStartOf="@id/productDolarLabel"
+        app:layout_constraintTop_toTopOf="@+id/productDolarLabel"
+        tools:text="15.99" />
+
+    <ImageButton
+        android:id="@+id/productAddImageCameraButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/oval_background"
+        android:backgroundTint="@color/black"
+        android:padding="4dp"
+        android:src="@drawable/ic_camera"
+        app:layout_constraintBottom_toTopOf="@id/productAddImageGalleryButton"
+        app:layout_constraintStart_toEndOf="@id/productImage"
+        app:layout_constraintTop_toTopOf="@id/productImage"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <ImageButton
+        android:id="@+id/productAddImageGalleryButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/oval_background"
+        android:backgroundTint="@color/black"
+        android:padding="4dp"
+        android:src="@drawable/ic_gallery"
+        android:layout_marginTop="15dp"
+        app:layout_constraintBottom_toBottomOf="@id/productImage"
+        app:layout_constraintStart_toStartOf="@id/productAddImageCameraButton"
+        app:layout_constraintTop_toBottomOf="@id/productAddImageCameraButton" />
+
+    <ImageView
+        android:id="@+id/productImage"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.5" />
+
     <TextView
         android:id="@+id/productCategory"
         android:layout_width="wrap_content"
@@ -97,72 +170,12 @@
         android:id="@+id/productDolarLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:text="$"
-        android:textSize="16sp"
         android:layout_marginTop="5dp"
         android:includeFontPadding="false"
+        android:text="$"
+        android:textColor="@color/black"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@id/productLongDescription"
-        app:layout_constraintTop_toBottomOf="@id/productLongDescription"/>
-
-    <EditText
-        android:id="@+id/productPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:includeFontPadding="false"
-        android:maxLength="6"
-        android:maxLines="1"
-        android:textAlignment="viewEnd"
-        app:layout_constraintBottom_toBottomOf="@+id/productDolarLabel"
-        app:layout_constraintEnd_toStartOf="@id/productDolarLabel"
-        app:layout_constraintTop_toTopOf="@+id/productDolarLabel"
-        tools:text="15.99"/>
-
-    <Button
-        android:id="@+id/productDeleteButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/green_button"
-        android:backgroundTint="@android:color/holo_red_light"
-        android:text="Delete product"
-        android:textColor="@color/app_white"
-        android:textSize="10sp"
-        android:visibility="gone"
-        app:layout_constraintVertical_bias="0"
-        app:layout_constraintBottom_toTopOf="@+id/productBackButton"
-        app:layout_constraintStart_toStartOf="@+id/productDateAdded"
-        app:layout_constraintTop_toBottomOf="@+id/productDateAdded"
-        app:layout_constraintWidth_percent="0.3" />
-
-    <Button
-        android:id="@+id/productBackButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/green_button"
-        android:text="Back"
-        android:textColor="@color/app_white"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_bias="1"
-        app:layout_constraintEnd_toStartOf="@+id/productSaveNewDataButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/productDateAdded"
-        app:layout_constraintWidth_percent="0.4" />
-
-    <Button
-        android:id="@+id/productSaveNewDataButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/green_button"
-        android:text="Save new changes"
-        android:textColor="@color/app_white"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@+id/productBackButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/productBackButton"
-        app:layout_constraintTop_toTopOf="@+id/productBackButton"
-        app:layout_constraintWidth_percent="0.4" />
+        app:layout_constraintTop_toBottomOf="@id/productLongDescription" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

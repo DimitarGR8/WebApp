@@ -20,7 +20,7 @@ public class DatabaseOperations extends AppDatabase{
         productValues.put("dateAdded", product.get_dateAdded());
         productValues.put("productPrice", product.get_productPrice());
         productValues.put("category", product.get_category());
-        productValues.put("productPicture", product.get_category());
+        productValues.put("productPicture", product.get_productPicture());
 
         SQLiteDatabase db = this.getWritableDatabase();
 
