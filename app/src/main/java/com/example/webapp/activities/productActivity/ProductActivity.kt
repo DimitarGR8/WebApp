@@ -13,12 +13,12 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
-import com.example.webapp.utils.BitmapConverter
-import com.example.webapp.data.database.DatabaseOperations
-import com.example.webapp.activities.ImageMainListViewModel
 import com.example.webapp.R
+import com.example.webapp.activities.ImageMainListViewModel
 import com.example.webapp.activities.baseActivity.BaseActivity
+import com.example.webapp.data.database.DatabaseOperations
 import com.example.webapp.data.model.Product
+import com.example.webapp.utils.BitmapConverter
 import com.example.webapp.utils.NavigationUtils
 import kotlinx.android.synthetic.main.activity_product.*
 
@@ -59,7 +59,6 @@ class ProductActivity: BaseActivity(), View.OnClickListener {
         productBackButton.setOnClickListener(this)
         productDeleteButton.setOnClickListener(this)
         productAddImageCameraButton.setOnClickListener(this)
-        productAddImageGalleryButton.setOnClickListener(this)
     }
 
     override fun onClick(view: View?) {
@@ -70,8 +69,7 @@ class ProductActivity: BaseActivity(), View.OnClickListener {
                 }
             }
             productBackButton -> {
-                //goBackToMainListActivity()
-                super.onBackPressed()
+                goBackToMainListActivity()
             }
             productDeleteButton -> {
                 if (deleteProduct()) {
@@ -84,9 +82,6 @@ class ProductActivity: BaseActivity(), View.OnClickListener {
                 } else {
                     ActivityCompat.requestPermissions(this, permissions, RC_PERMISSION)
                 }
-            }
-            productAddImageGalleryButton -> {
-
             }
         }
     }
@@ -113,6 +108,11 @@ class ProductActivity: BaseActivity(), View.OnClickListener {
                 Toast.makeText(this, "Permissions not granted by the user!", Toast.LENGTH_LONG).show()
             }
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
     }
 
     private fun setProductData() {
@@ -166,6 +166,7 @@ class ProductActivity: BaseActivity(), View.OnClickListener {
     }
 
     private fun goBackToMainListActivity() {
+        finish()
         NavigationUtils().moveToMainListActivityWithNoHistory(this, isThisAdmin)
     }
 
@@ -183,13 +184,13 @@ class ProductActivity: BaseActivity(), View.OnClickListener {
 
     private fun setAdminViewsProperties() {
         productAddImageCameraButton.isEnabled = true
-        setVisibilityEnabled(arrayListOf(productAddImageCameraButton, productSaveNewDataButton, productAddImageGalleryButton, productDeleteButton))
+        setVisibilityEnabled(arrayListOf(productAddImageCameraButton, productSaveNewDataButton, productDeleteButton))
         setFocusabilityEnabled(arrayListOf(productName, productShortDescription, productLongDescription, productPrice))
     }
 
     private fun setUserViewsProperties() {
         productAddImageCameraButton.isEnabled = false
-        setVisibilityGone(arrayListOf(productAddImageCameraButton, productSaveNewDataButton, productAddImageGalleryButton, productDeleteButton))
+        setVisibilityGone(arrayListOf(productAddImageCameraButton, productSaveNewDataButton, productDeleteButton))
         setFocusabilityDisabled(arrayListOf(productName, productShortDescription, productLongDescription, productPrice))
     }
 

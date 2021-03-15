@@ -48,7 +48,6 @@ public class CheckoutActivity extends BaseActivity implements View.OnClickListen
         checkoutInputFieldTown = findViewById(R.id.checkoutInputFieldTown);
         checkoutInputFieldAddress = findViewById(R.id.checkoutInputFieldAddress);
         checkoutInputFieldPostalCode = findViewById(R.id.checkoutInputFieldPostalCode);
-
         checkoutBackButton = findViewById(R.id.checkoutBackButton);
         checkoutFinalizeOrderButton = findViewById(R.id.checkoutFinalizeOrderButton);
     }

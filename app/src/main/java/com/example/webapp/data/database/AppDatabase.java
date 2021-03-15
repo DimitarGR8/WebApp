@@ -9,7 +9,6 @@ public class AppDatabase extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
     protected static final String DATABASE_NAME = "ProductsDatabase";
     protected static final String TABLE_NAME = "products";
-
     protected static final String PRODUCT_ID = "productId";
     protected static final String PRODUCT_NAME = "productName";
     protected static final String PRODUCT_CATEGORY = "category";

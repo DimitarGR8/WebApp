@@ -34,8 +34,6 @@ class NavigationUtils {
         context.startActivity(mapActivityIntent)
     }
 
-
-
     fun moveToProductActivity(context: Context, basket: Product, isThisAdmin: Boolean) {
         val mapActivityIntent = Intent(context, ProductActivity::class.java).apply {
             this.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK

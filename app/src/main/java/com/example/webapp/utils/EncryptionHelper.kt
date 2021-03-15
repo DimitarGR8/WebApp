@@ -7,6 +7,8 @@ import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKey
 import java.io.File
 
+// Class is partially working. My idea was to encrypt the newly created images and store them in different folder. Then to be able to use them only
+// by decrypting them back. However, due to lack of time i was not able to implement the whole idea.
 object EncryptionHelper {
     private const val sharedPreferences = "com.example.securelocker.pref"
 

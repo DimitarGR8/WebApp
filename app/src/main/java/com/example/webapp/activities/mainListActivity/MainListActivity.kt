@@ -28,6 +28,14 @@ class MainListActivity : BaseActivity(), View.OnClickListener {
         NavigationUtils().moveToProductActivity(this, it, isThisAdmin)
     }
 
+    override fun onRestart() {
+        super.onRestart()
+        finish()
+        overridePendingTransition(0, 0)
+        startActivity(intent)
+        overridePendingTransition(0, 0)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_list)

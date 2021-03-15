@@ -25,6 +25,7 @@ import com.example.webapp.activities.baseActivity.BaseActivity;
 import com.example.webapp.data.model.Product;
 import com.example.webapp.utils.NavigationUtils;
 import com.google.android.material.textfield.TextInputEditText;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -114,7 +115,7 @@ public class CreateProductActivity extends BaseActivity implements View.OnClickL
     private void goBackToMainScreen() {
         NavigationUtils navUtils = new NavigationUtils();
         boolean isThisAdmin = getIntent().getBooleanExtra("isThisAdmin", false);
-        navUtils.moveToMainListActivity(this, isThisAdmin);
+        navUtils.moveToMainListActivityWithNoHistory(this, isThisAdmin);
     }
 
     @Override

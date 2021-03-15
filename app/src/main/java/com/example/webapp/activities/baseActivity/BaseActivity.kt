@@ -1,13 +1,13 @@
 package com.example.webapp.activities.baseActivity
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 
 open class BaseActivity: AppCompatActivity() {
 
     companion object {
+        const val RC_TAKE_IMAGE = 300
         const val RC_CAPTURE_IMAGE = 100
         const val RC_PERMISSION = 200
     }

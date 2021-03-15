@@ -10,7 +10,6 @@ import com.example.webapp.R;
 import com.example.webapp.activities.baseActivity.BaseActivity;
 import com.example.webapp.data.model.Product;
 import com.example.webapp.utils.NavigationUtils;
-
 import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.Objects;

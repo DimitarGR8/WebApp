@@ -15,7 +15,8 @@ import java.lang.Exception
 import java.text.SimpleDateFormat
 import java.util.*
 
-
+// Class is partially working. My idea was to encrypt the newly created images and store them in different folder. Then to be able to use them only
+// by decrypting them back. However, due to lack of time i was not able to implement the whole idea.
 class ImageMainListViewModel(application: Application) : AndroidViewModel(application) {
 
     private val context = application
@@ -28,6 +29,7 @@ class ImageMainListViewModel(application: Application) : AndroidViewModel(applic
     val fileName: MutableLiveData<String> = MutableLiveData()
     val isProgress: MutableLiveData<Boolean> = MutableLiveData()
 
+    //Works well, each image is being stored
     fun storeEncryptedBitmap() {
         viewModelScope.launch {
             val scaleBitmap = bitmap.value?.let { Bitmap.createScaledBitmap(bitmap.value!!, 1080, 780, true) }
@@ -57,6 +59,7 @@ class ImageMainListViewModel(application: Application) : AndroidViewModel(applic
         }
     }
 
+    // This function was supposed to get the encrypted files from the pointed directory
     fun getEncryptedBitmap() {
         viewModelScope.launch {
             val file = File(directory, fileName.value)
@@ -75,6 +78,7 @@ class ImageMainListViewModel(application: Application) : AndroidViewModel(applic
         }
     }
 
+    // This function was supposed to get the files from the pointed directory.
     fun getFileList() {
         isProgress.value = true
 
