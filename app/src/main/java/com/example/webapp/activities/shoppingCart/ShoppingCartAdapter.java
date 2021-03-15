@@ -9,6 +9,7 @@ import com.example.webapp.R;
 import com.example.webapp.data.model.Product;
 import java.util.ArrayList;
 
+
 public class ShoppingCartAdapter extends RecyclerView.Adapter<ShoppingCartViewHolder> {
     ArrayList<Product> shoppingCartList;
     IShoppingCartActivity iShoppingCartActivity;

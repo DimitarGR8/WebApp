@@ -3,4 +3,8 @@
     <string name="login_as_admin">Login as admin</string>
     <string name="login_as_user">Login as user</string>
     <string name="label_products_list">Products list</string>
+    <string name="label_product_screen">Product screen</string>
+    <string name="label_create_new_product_screen">Create new product screen</string>
+    <string name="label_back">Back</string>
+    <string name="label_finalize_order">Finalize order</string>
 </resources>

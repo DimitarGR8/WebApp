@@ -9,9 +9,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.webapp.R;
 import com.example.webapp.activities.baseActivity.BaseActivity;
 import com.example.webapp.data.model.Product;
+import com.example.webapp.utils.NavigationUtils;
+
 import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.Objects;
+
 
 public class ShoppingCartActivity extends BaseActivity implements View.OnClickListener, IShoppingCartActivity {
 
@@ -21,6 +24,7 @@ public class ShoppingCartActivity extends BaseActivity implements View.OnClickLi
     TextView cartTotalAmountLabel;
     Button cartCompleteOrderButton;
     ArrayList<Product> shoppingCartList;
+    Double finalPrice;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -35,7 +39,7 @@ public class ShoppingCartActivity extends BaseActivity implements View.OnClickLi
     @Override
     public void onClick(View view) {
         if(view == cartCompleteOrderButton) {
-
+            moveToCheckoutActivity();
         }
     }
 
@@ -43,6 +47,12 @@ public class ShoppingCartActivity extends BaseActivity implements View.OnClickLi
     public void onDeleteButtonClick(Product product) {
         shoppingCartList.remove(product);
         Objects.requireNonNull(cartRecyclerView.getAdapter()).notifyDataSetChanged();
+
+        if(shoppingCartList.isEmpty()) {
+            moveBackToMainListActivity();
+        } else {
+            setProperPrices();
+        }
     }
 
     private void initViews() {
@@ -69,9 +79,21 @@ public class ShoppingCartActivity extends BaseActivity implements View.OnClickLi
             pricesList.add(product.get_productPrice());
         });
 
-        double finalPrice = pricesList.stream().mapToDouble(Double::parseDouble).sum();
+        finalPrice = pricesList.stream().mapToDouble(Double::parseDouble).sum();
         double shippingPrice = Double.parseDouble(cartShippingAmountLabel.getText().toString());
         cartSubtotalAmountLabel.setText(String.valueOf(finalPrice));
         cartTotalAmountLabel.setText(String.valueOf(finalPrice + shippingPrice));
+    }
+
+    private void moveBackToMainListActivity() {
+        NavigationUtils navigationUtils = new NavigationUtils();
+        boolean isThisAdmin = getIntent().getBooleanExtra("isThisAdmin", false);
+        navigationUtils.moveToMainListActivity(this, isThisAdmin);
+    }
+
+    private void moveToCheckoutActivity() {
+        NavigationUtils navigationUtils = new NavigationUtils();
+        boolean isThisAdmin = getIntent().getBooleanExtra("isThisAdmin", false);
+        navigationUtils.moveToCheckoutActivity(this, isThisAdmin, finalPrice);
     }
 }

@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.webapp.data.model.Product
 import com.example.webapp.R
 
+
 class MainListActivityAdapter(var myDataSet: ArrayList<Product>,
                               private val addToBacketClickListener: (Product) -> Unit,
                               private val rowClickListener:(Product) -> Unit) : RecyclerView.Adapter<MainListActivityAdapterViewHolder>() {

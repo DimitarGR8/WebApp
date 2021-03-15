@@ -22,6 +22,7 @@ import com.example.webapp.data.model.Product
 import com.example.webapp.utils.NavigationUtils
 import kotlinx.android.synthetic.main.activity_product.*
 
+
 class ProductActivity: BaseActivity(), View.OnClickListener {
 
     lateinit var viewModel: ImageMainListViewModel
@@ -43,15 +44,13 @@ class ProductActivity: BaseActivity(), View.OnClickListener {
 
         viewModel = ViewModelProvider(this).get(ImageMainListViewModel::class.java)
 
-        // Get the list of files
+        // Get the list of files from directory
         viewModel.getFileList()
 
         if(intent.getBooleanExtra("isThisAdmin", false)) {
-            productSaveNewDataButton.visibility = View.VISIBLE
-            productDeleteButton.visibility = View.VISIBLE
+           setAdminViewsProperties()
         } else {
-            productSaveNewDataButton.visibility = View.GONE
-            productDeleteButton.visibility = View.GONE
+           setUserViewsProperties()
         }
 
         setProductData()
@@ -71,7 +70,8 @@ class ProductActivity: BaseActivity(), View.OnClickListener {
                 }
             }
             productBackButton -> {
-                goBackToMainListActivity()
+                //goBackToMainListActivity()
+                super.onBackPressed()
             }
             productDeleteButton -> {
                 if (deleteProduct()) {
@@ -103,6 +103,18 @@ class ProductActivity: BaseActivity(), View.OnClickListener {
         }
     }
 
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        if(requestCode == RC_PERMISSION) {
+            if(allPermissionsGranted()) {
+                startCamera()
+            } else {
+                Toast.makeText(this, "Permissions not granted by the user!", Toast.LENGTH_LONG).show()
+            }
+        }
+    }
+
     private fun setProductData() {
         productIdText = intent.getIntExtra("productId", 0)
         productNameText = intent.getStringExtra("productName").toString()
@@ -118,14 +130,13 @@ class ProductActivity: BaseActivity(), View.OnClickListener {
         productShortDescription.setText(productShortDescriptionText)
         productLongDescription.setText(productLongDescriptionText)
         productDateAdded.text = productAddedDateText
-        productPrice.setText(productPriceText.toString())
+        productPrice.setText(productPriceText)
         productImage.setImageBitmap(BitmapConverter.convertFromString(productImageText))
 
         viewModel.bitmap.observe(this, {
             productImage.setImageBitmap(it)
         })
     }
-
 
     private fun updateProduct() : Boolean {
         val bitmapString: MutableLiveData<Bitmap> = MutableLiveData()
@@ -155,23 +166,11 @@ class ProductActivity: BaseActivity(), View.OnClickListener {
     }
 
     private fun goBackToMainListActivity() {
-        NavigationUtils().moveToMainListActivity(this, isThisAdmin)
+        NavigationUtils().moveToMainListActivityWithNoHistory(this, isThisAdmin)
     }
 
     private fun allPermissionsGranted() = permissions.all {
         ContextCompat.checkSelfPermission(this, it) == PackageManager.PERMISSION_GRANTED
-    }
-
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-
-        if(requestCode == RC_PERMISSION) {
-            if(allPermissionsGranted()) {
-                startCamera()
-            } else {
-                Toast.makeText(this, "Permissions not granted by the user!", Toast.LENGTH_LONG).show()
-            }
-        }
     }
 
     private fun startCamera() {
@@ -179,6 +178,61 @@ class ProductActivity: BaseActivity(), View.OnClickListener {
             intent.resolveActivity(this.packageManager)?.also {
                 startActivityForResult(intent, RC_CAPTURE_IMAGE)
             }
+        }
+    }
+
+    private fun setAdminViewsProperties() {
+        productAddImageCameraButton.isEnabled = true
+//        productAddImageCameraButton.visibility = View.VISIBLE
+//        productSaveNewDataButton.visibility = View.VISIBLE
+//        productAddImageGalleryButton.visibility = View.VISIBLE
+//        productDeleteButton.visibility = View.VISIBLE
+//
+        setVisibilityEnabled(arrayListOf(productAddImageCameraButton, productSaveNewDataButton, productAddImageGalleryButton, productDeleteButton))
+        setFocusabilityEnabled(arrayListOf(productName, productShortDescription, productLongDescription, productPrice))
+
+//        productName.isFocusable = true
+//        productShortDescription.isFocusable = true
+//        productLongDescription.isFocusable = true
+//        productPrice.isFocusable = true
+    }
+
+    private fun setUserViewsProperties() {
+        productAddImageCameraButton.isEnabled = false
+//        productAddImageCameraButton.visibility = View.GONE
+//        productAddImageGalleryButton.visibility = View.GONE
+//        productSaveNewDataButton.visibility = View.GONE
+//        productDeleteButton.visibility = View.GONE
+        setVisibilityGone(arrayListOf(productAddImageCameraButton, productSaveNewDataButton, productAddImageGalleryButton, productDeleteButton))
+        setFocusabilityDisabled(arrayListOf(productName, productShortDescription, productLongDescription, productPrice))
+//        productName.isFocusable = false
+//        productShortDescription.isFocusable = false
+//        productLongDescription.isFocusable = false
+//        productPrice.isFocusable = false
+
+    }
+
+    private fun setFocusabilityEnabled(arrayList: ArrayList<View>) {
+        for(view in arrayList) {
+            view.isFocusable = true
+        }
+    }
+
+    private fun setFocusabilityDisabled(arrayList: ArrayList<View>) {
+        for(view in arrayList) {
+            view.isFocusable = false
+        }
+    }
+
+    private fun setVisibilityEnabled(arrayList: ArrayList<View>) {
+        for(view in arrayList) {
+            view.visibility = View.VISIBLE
+        }
+    }
+
+    private fun setVisibilityGone(arrayList: ArrayList<View>) {
+        for(view in arrayList) {
+            view.visibility = View.GONE
         }
     }
 }

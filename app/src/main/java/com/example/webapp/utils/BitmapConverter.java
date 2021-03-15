@@ -5,6 +5,7 @@ import android.graphics.BitmapFactory;
 import android.util.Base64;
 import java.io.ByteArrayOutputStream;
 
+
 public class BitmapConverter
 {
     public static Bitmap convertFromString(String base64Str) throws IllegalArgumentException {

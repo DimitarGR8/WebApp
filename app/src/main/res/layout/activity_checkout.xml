@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/checkoutBackButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/green_button"
+        android:text="@string/label_back"
+        android:textColor="@color/app_white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/checkoutFinalizeOrderButton"
+        app:layout_constraintTop_toBottomOf="@id/checkoutFieldPostalCode"
+        app:layout_constraintVertical_bias="1"
+        app:layout_constraintWidth_percent="0.4" />
+
+    <Button
+        android:id="@+id/checkoutFinalizeOrderButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/green_button"
+        android:text="@string/label_finalize_order"
+        android:textColor="@color/app_white"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/checkoutBackButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/checkoutFieldPostalCode"
+        app:layout_constraintVertical_bias="1"
+        app:layout_constraintWidth_percent="0.4" />
+
+    <TextView
+        android:id="@+id/checkoutTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:includeFontPadding="false"
+        android:text="@string/label_product_screen"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/checkoutTitleBorder"
+        android:layout_width="0dp"
+        android:layout_height="0.5dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@color/app_grey_stroke"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/checkoutTitle" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/checkoutFieldFirstName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/checkout_form_fields_background"
+        android:paddingStart="20dp"
+        android:paddingTop="11dp"
+        android:paddingEnd="20dp"
+        android:textColorHint="@color/black"
+        app:hintTextAppearance="@style/TextAppearance.App.TextInputLayoutFirst"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/checkoutTitleBorder">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/checkoutInputFieldFirstName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:backgroundTint="@android:color/transparent"
+            android:hint="First name"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingTop="5dp"
+            android:paddingBottom="11dp"
+            android:textColor="@color/app_green"
+            android:textCursorDrawable="@drawable/cursor_color"
+            android:textSize="12sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/checkoutFieldLastName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/checkout_form_fields_background"
+        android:paddingStart="20dp"
+        android:paddingTop="11dp"
+        android:paddingEnd="20dp"
+        android:textColorHint="@color/black"
+        app:hintTextAppearance="@style/TextAppearance.App.TextInputLayoutFirst"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/checkoutFieldFirstName">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/checkoutInputFieldLastName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:backgroundTint="@android:color/transparent"
+            android:hint="Last name"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingTop="5dp"
+            android:paddingBottom="11dp"
+            android:textColor="@color/app_green"
+            android:textCursorDrawable="@drawable/cursor_color"
+            android:textSize="12sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/checkoutFieldEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/checkout_form_fields_background"
+        android:paddingStart="20dp"
+        android:paddingTop="11dp"
+        android:paddingEnd="20dp"
+        android:textColorHint="@color/black"
+        app:hintTextAppearance="@style/TextAppearance.App.TextInputLayoutFirst"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/checkoutFieldLastName">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/checkoutInputFieldEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:backgroundTint="@android:color/transparent"
+            android:hint="Email address"
+            android:imeOptions="actionDone"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:paddingTop="5dp"
+            android:paddingBottom="11dp"
+            android:textColor="@color/app_green"
+            android:textCursorDrawable="@drawable/cursor_color"
+            android:textSize="12sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/checkoutFieldPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/checkout_form_fields_background"
+        android:paddingStart="20dp"
+        android:paddingTop="11dp"
+        android:paddingEnd="20dp"
+        android:textColorHint="@color/black"
+        app:hintTextAppearance="@style/TextAppearance.App.TextInputLayoutFirst"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/checkoutFieldEmail">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/checkoutInputFieldPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:backgroundTint="@android:color/transparent"
+            android:hint="Phone number"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingTop="5dp"
+            android:paddingBottom="11dp"
+            android:textColor="@color/app_green"
+            android:textCursorDrawable="@drawable/cursor_color"
+            android:textSize="12sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/checkoutFieldCountry"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/checkout_form_fields_background"
+        android:paddingStart="20dp"
+        android:paddingTop="11dp"
+        android:paddingEnd="20dp"
+        android:textColorHint="@color/black"
+        app:hintTextAppearance="@style/TextAppearance.App.TextInputLayoutFirst"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/checkoutFieldPhone">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/checkoutInputFieldCountry"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:backgroundTint="@android:color/transparent"
+            android:hint="Country"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingTop="5dp"
+            android:paddingBottom="11dp"
+            android:textColor="@color/app_green"
+            android:textCursorDrawable="@drawable/cursor_color"
+            android:textSize="12sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/checkoutFieldTown"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/checkout_form_fields_background"
+        android:paddingStart="20dp"
+        android:paddingTop="11dp"
+        android:paddingEnd="20dp"
+        android:textColorHint="@color/black"
+        app:hintTextAppearance="@style/TextAppearance.App.TextInputLayoutFirst"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/checkoutFieldCountry">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/checkoutInputFieldTown"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:backgroundTint="@android:color/transparent"
+            android:hint="Town"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingTop="5dp"
+            android:paddingBottom="11dp"
+            android:textColor="@color/app_green"
+            android:textCursorDrawable="@drawable/cursor_color"
+            android:textSize="12sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/checkoutFieldAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/checkout_form_fields_background"
+        android:paddingStart="20dp"
+        android:paddingTop="11dp"
+        android:paddingEnd="20dp"
+        android:textColorHint="@color/black"
+        app:hintTextAppearance="@style/TextAppearance.App.TextInputLayoutFirst"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/checkoutFieldTown">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/checkoutInputFieldAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:backgroundTint="@android:color/transparent"
+            android:hint="Address"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingTop="5dp"
+            android:paddingBottom="11dp"
+            android:textColor="@color/app_green"
+            android:textCursorDrawable="@drawable/cursor_color"
+            android:textSize="12sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/checkoutFieldPostalCode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/checkout_form_fields_background"
+        android:paddingStart="20dp"
+        android:paddingTop="11dp"
+        android:paddingEnd="20dp"
+        android:textColorHint="@color/black"
+        app:hintTextAppearance="@style/TextAppearance.App.TextInputLayoutFirst"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/checkoutFieldAddress">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/checkoutInputFieldPostalCode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:backgroundTint="@android:color/transparent"
+            android:hint="Postal code"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingTop="5dp"
+            android:paddingBottom="11dp"
+            android:textColor="@color/app_green"
+            android:textCursorDrawable="@drawable/cursor_color"
+            android:textSize="12sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

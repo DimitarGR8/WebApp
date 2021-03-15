@@ -17,7 +17,6 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModelProvider;
-
 import com.example.webapp.utils.BitmapConverter;
 import com.example.webapp.data.database.DatabaseOperations;
 import com.example.webapp.activities.ImageMainListViewModel;

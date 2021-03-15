@@ -12,6 +12,7 @@ import com.example.webapp.data.model.Product
 import com.example.webapp.utils.NavigationUtils
 import kotlinx.android.synthetic.main.activity_main_list.*
 
+
 class MainListActivity : BaseActivity(), View.OnClickListener {
 
     private var productsInBacket: ArrayList<Product> = arrayListOf()
@@ -39,6 +40,12 @@ class MainListActivity : BaseActivity(), View.OnClickListener {
     }
 
     private fun initViews() {
+        if(isThisAdmin) {
+            listScreenNewProductButton.visibility = View.VISIBLE
+        } else {
+            listScreenNewProductButton.visibility = View.GONE
+        }
+
         listScreenCartCounter.text = productsInBacket.count().toString()
     }
 

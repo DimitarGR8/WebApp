@@ -6,6 +6,7 @@ import com.example.webapp.utils.BitmapConverter
 import com.example.webapp.data.model.Product
 import kotlinx.android.synthetic.main.products_list_row.view.*
 
+
 class MainListActivityAdapterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     fun setData(product: Product, addToBasketClickListener: (Product) -> Unit, rowClickListener: (Product) -> Unit) {
 
